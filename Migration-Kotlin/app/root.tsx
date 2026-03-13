@@ -12,6 +12,10 @@ import "./styles/grid.scss";
 
 import type { Route } from "./+types/root";
 
+import Header from "~/components/header";
+import Footer from "~/components/footer";
+
+
 export const links: Route.LinksFunction = () => [
   { rel: "icon", type: "image/svg+xml", href: "/assets/images/favicon.svg" },
   { rel: "alternate icon", href: "/assets/images/favicon.ico" },
@@ -38,7 +42,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <div className="global-layout">
+          <Header />
+          {children}
+          <Footer />
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
