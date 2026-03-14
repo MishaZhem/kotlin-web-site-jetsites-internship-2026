@@ -1,4 +1,4 @@
-@import "config/_font";
+@use "fonts/jetbrains-mono";
 
 // Sans Serif
 @import url('//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400italic,700italic,400,700');
@@ -19,5 +19,3 @@
     font-family: 'GraublauSlab Semibold';
     src: url('/assets/fonts/GraublauSlab-Semibold.woff');
 }
-
-@import "fonts/jetbrains-mono";
