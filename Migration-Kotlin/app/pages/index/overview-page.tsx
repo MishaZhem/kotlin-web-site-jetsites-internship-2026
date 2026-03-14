@@ -1,4 +1,7 @@
 import { ThemeProvider } from "@rescui/ui-contexts";
+import "@rescui/typography/lib/font-jb-sans-auto.css";
+import "./overview-page.scss";
+
 import { HeaderSection } from "./header-section";
 import { LatestFromKotlinSection } from "./latest-from-kotlin-section";
 import { WhyKotlinSection } from "./why-kotlin-section";
