@@ -1,24 +1,36 @@
-# Welcome to React Router!
+# Kotlin Website - React Router 7 Migration
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Migration of the [kotlinlang.org](https://kotlinlang.org) homepage from a legacy stack (Flask + Webpack + React 17) to **React Router 7 Framework Mode** with Server-Side Rendering.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## What was done
 
-## Features
+**Stack migration:**
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Replaced Flask (Python) backend and Webpack bundler with React Router 7 + Vite
+- Enabled full SSR - the page renders on the server and hydrates on the client
+- Migrated from JavaScript to TypeScript with strict mode
+
+**Preserved from the original:**
+
+- All five page sections: Hero, Latest from Kotlin, Why Kotlin, Usage Highlights, Get Started
+- Interactive elements: tab switching with syntax highlighting (highlight.js), sort toggle with localStorage persistence
+- Responsive grid system and all visual styles
+- `@rescui` component library (Button, Card, TabList, Typography, ThemeProvider)
+- `@jetbrains/kotlin-web-site-ui` Header and Footer components
+
+**SSR adaptations:**
+
+- `localStorage` access moved into `useEffect` to avoid server errors
+- `window.innerWidth` check replaced with CSS @media for card visibility
+- `highlight.js` uses `hljs.highlight()` API instead of `highlightBlock()`
 
 ## Getting Started
 
-### Installation
+### Prerequisites
 
-Install the dependencies:
+- Node.js >= 18
+
+### Installation
 
 ```bash
 npm install
@@ -26,62 +38,57 @@ npm install
 
 ### Development
 
-Start the development server with HMR:
-
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Open [http://localhost:5173](http://localhost:5173).
 
-## Building for Production
-
-Create a production build:
+### Production build
 
 ```bash
 npm run build
+npm start
 ```
 
-## Deployment
+The production server runs on [http://localhost:3000](http://localhost:3000).
 
-### Docker Deployment
-
-To build and run using Docker:
+### Type checking
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+npm run typecheck
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+## Project Structure
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+  components/
+    footer/          - Footer
+    header/          - Header
+    layout/          - Section and Container layout components
+  pages/index/
+    overview-page.tsx       - Main page (all sections connected)
+    header-section/         - Hero banner
+    latest-from-kotlin-section/ - News and blog links
+    why-kotlin-section/     - Language features with code example
+      programming-language/ - Interactive tab list with syntax highlighting
+    usage-section/          - Companies list with sorting
+    start-section/          - Button get started + gradient background
+  routes/
+    home.tsx         - Home route with meta tags
+  styles/            - Global SCSS
+public/
+  assets/            - Static images, fonts, favicons
 ```
 
-## Styling
+## Tech Stack
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+| Layer             | Technology                               |
+| ----------------- | ---------------------------------------- |
+| Framework         | React Router 7 (Framework Mode with SSR) |
+| Build             | Vite                                     |
+| Language          | TypeScript                               |
+| UI                | React 18, @rescui components             |
+| Styles            | SCSS                                     |
+| Code highlighting | highlight.js 10.5.0                      |
