@@ -3,6 +3,7 @@ import { HeaderSection } from "./header-section";
 import { LatestFromKotlinSection } from "./latest-from-kotlin-section";
 import { WhyKotlinSection } from "./why-kotlin-section";
 import { UsageSection } from "./usage-section";
+import { StartSection } from "./start-section";
 
 export default function OverviewPage() {
     return (
@@ -12,6 +13,7 @@ export default function OverviewPage() {
                 <LatestFromKotlinSection />
                 <WhyKotlinSection />
                 <UsageSection />
+                <StartSection />
             </main>
         </ThemeProvider>
     );
