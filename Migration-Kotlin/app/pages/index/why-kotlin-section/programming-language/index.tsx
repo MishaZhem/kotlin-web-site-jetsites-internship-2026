@@ -5,6 +5,7 @@ import { TabList, Tab, TabSeparator } from "@rescui/tab-list";
 import cn from "classnames";
 import hljs from "highlight.js/lib/core";
 import kotlin from "highlight.js/lib/languages/kotlin";
+import "highlight.js/styles/github.css";
 
 import { tabs } from "./data";
 
