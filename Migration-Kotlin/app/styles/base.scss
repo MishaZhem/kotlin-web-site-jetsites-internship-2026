@@ -23,19 +23,7 @@ html {
 
 body {
     height: 100%;
-    color: $base-color;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
     background-color: #fff;
-}
-
-a {
-    color: $base-link-color;
-    text-decoration: underline
-}
-
-a:hover {
-    color: $base-link-hover-color;
 }
 
 .hidden {
